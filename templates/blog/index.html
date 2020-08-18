@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}TiMoo的网站|首页{% endblock %}
+
+{% block 分类 %}
+{% for i in 分类 %}
+<a class="dropdown-item" href="#">{{ i.type }}</a>
+{% endfor %}
+
+{% endblock %}
+
+{% block auth %}
+    {% if 判断 is True%}
+    <a href="#" class="nav-link">{{ user }}</a>
+    <a href="{% url 'logout' %}" class="nav-link">退出</a>
+    {% else %}
+    <a href="{% url 'login' %}" class="nav-link">登录</a>
+    <a href="{% url 'regist' %}" class="nav-link">注册</a>
+    {% endif %}
+{% endblock %}
+
+
+
+{% block content %}
+    <h3 class="home" style="font-size: 222%;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);">欢迎访问我的网站，顺便看</h3>
+{% endblock %}
+

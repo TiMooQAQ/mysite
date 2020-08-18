@@ -1,0 +1,66 @@
+{% extends 'blog/index.html' %}
+{% block title %}我的网站|博客{% endblock %}
+{% block head %}
+    <style>
+    .title{
+        color: black;
+    }
+    .title:hover{
+        text-decoration: none;
+        color: lightgreen;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+        <div class="container">
+        <div class="row clearfix">
+		<div class="col-md-12 column">
+        <div class="alert alert-light" role="alert" style="background-color: #f6f6f6;border: white">
+          <h4>一共有{{ all|length}}篇文章</h4>
+          <hr>
+            {% for i in blog %}
+            <div class="alert alert-info" role="alert" style="background: white;border: 1px solid #eaeaea">
+                <a style="display: inline-block;float: left; margin-right: 20px" href="{% url 'blog_detail' i.id %}"><img src="/media/{{ i.cover }}" style="width: 220px;height: 150px"></a>
+                <span style="width: 780px;height: 150px;display: inline-block;">
+                   <a class="title" href="{% url 'blog_detail' i.id %}"><h4>{{ i.title }}</h4></a>
+                    <p>作者:{{ i.author }}</p>
+                    <p>内容:{{ i.content|safe|truncatechars_html:30 }}</p>
+                </span>
+            </div>
+
+            {% endfor %}
+        <div class="pagination">
+        <span class="step-links">
+            {% if blog.has_previous %}
+                <a href="?page={{ blog.previous_page_number }}">上一页</a>
+            {% endif %}
+
+            <span class="current">
+                页数 {{ blog.number }} of {{ blog.paginator.num_pages }}.
+            </span>
+
+            {% if blog.has_next %}
+                <a href="?page={{ blog.next_page_number }}">下一页</a>
+            {% endif %}
+        </span>
+    </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

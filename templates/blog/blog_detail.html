@@ -1,0 +1,44 @@
+{% extends 'blog/index.html' %}
+{% block title %}我的网站|博客{% endblock %}
+{% block head %}
+    <style>
+    .title{
+        color: black;
+    }
+    .title:hover{
+        text-decoration: none;
+        color: lightgreen;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+        <div class="container">
+        <div class="row clearfix">
+		<div class="col-md-12 column">
+        <div class="alert alert-light" role="alert" style="background-color: #f6f6f6;border: white">
+          <h4 style="color: black;text-align: center">{{ bolg.title }}</h4>
+          <hr>
+            <div class="alert alert-info" role="alert" style="background: white;border: 1px solid #eaeaea">
+
+                    {{ bolg.content|safe }}
+
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
